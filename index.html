@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Hot Beans Web</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header>
+    <div class="logo">Hot Beans</div>
+    <button id="theme-toggle">🌙</button>
+  </header>
+
+  <nav>
+    <ul class="nav-list">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="jobs.html">Jobs</a></li>
+      <li><a href="apply.html">Apply</a></li>
+    </ul>
+  </nav>
+
+  <main>
+    <!-- Hero Section (full-image visible) -->
+    <section class="hero">
+      <div class="hero-overlay">
+        <h1>Welcome to Hot Beans Web</h1>
+        <p>Join our team of passionate web developers.</p>
+        <a class="btn" href="apply.html">Apply Now</a>
+      </div>
+    </section>
+
+    <section class="features">
+      <div class="feature-card">
+        <img src="images/sBadger.png" alt="Training Programs" />
+        <h2>Training Programs</h2>
+        <p>We support new developers with hands-on training.</p>
+      </div>
+      <div class="feature-card">
+        <img src="avdol.png" alt="Company Culture" />
+        <h2>Company Culture</h2>
+        <p>Innovative, collaborative, and growth-oriented environment.</p>
+      </div>
+      <div class="feature-card">
+        <img src="images/hot beans.png" alt="Join Our Team" />
+        <h2>Join Our Team</h2>
+        <p>Find your place in our rapidly growing web division.</p>
+      </div>
+    </section>
+  </main>
+
+  <!-- AI Assistant Widget (Bottom Right) -->
+<div class="ai-widget">
+  <div class="ai-header">AI Assistant</div>
+  <div class="ai-body">
+    <div id="ai-response">How may I help you?<br><small>Try asking about: jobs, courses, company, application, location, contact, internships, support</small></div>
+    <input type="text" id="ai-input" placeholder="Type your question..." />
+    <button id="ai-send">Send</button>
+  </div>
+</div>
+
+
+  <script src="script.js"></script>
+</body>
+</html>

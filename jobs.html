@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Job Openings | Hot Beans Web</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header>
+    <div class="logo">Hot Beans</div>
+    <button id="theme-toggle">🌙</button>
+  </header>
+
+  <nav>
+    <ul class="nav-list">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="jobs.html">Jobs</a></li>
+      <li><a href="apply.html">Apply</a></li>
+    </ul>
+  </nav>
+
+  <main>
+    <section class="job-listings">
+      <h1>Current Openings</h1>
+
+      <div class="job-card">
+        <h2>Junior Front-End Developer</h2>
+        <ul>
+          <li>Familiarity with HTML, CSS, JavaScript</li>
+          <li>Experience with React or Vue (or willingness to learn)</li>
+          <li>Basic understanding of UX/UI principles</li>
+          <li>Git &amp; GitHub usage</li>
+        </ul>
+      </div>
+
+      <div class="job-card">
+        <h2>Junior Back-End Developer</h2>
+        <ul>
+          <li>Knowledge of Node.js and Express</li>
+          <li>Basic SQL/NoSQL databases (MongoDB, PostgreSQL)</li>
+          <li>Understanding of RESTful API design</li>
+          <li>Git &amp; GitHub usage</li>
+        </ul>
+      </div>
+
+      <div class="job-card">
+        <h2>Full-Stack Intern</h2>
+        <ul>
+          <li>Comfortable with HTML, CSS, JavaScript</li>
+          <li>Basic Node.js or Python experience</li>
+          <li>Willingness to learn front-end frameworks</li>
+          <li>Team-player attitude</li>
+        </ul>
+      </div>
+    </section>
+  </main>
+
+  <!-- AI Assistant Widget (Bottom Right) -->
+<div class="ai-widget">
+  <div class="ai-header">AI Assistant</div>
+  <div class="ai-body">
+    <div id="ai-response">How may I help you?<br><small>Try asking about: jobs, courses, company, application, location, contact, internships, support</small></div>
+    <input type="text" id="ai-input" placeholder="Type your question..." />
+    <button id="ai-send">Send</button>
+  </div>
+</div>
+
+
+  <script src="script.js"></script>
+</body>
+</html>
+

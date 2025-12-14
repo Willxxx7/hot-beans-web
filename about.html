@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>About Hot Beans Web</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header>
+    <div class="logo">Hot Beans</div>
+    <button id="theme-toggle">🌙</button>
+  </header>
+
+  <nav>
+    <ul class="nav-list">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="jobs.html">Jobs</a></li>
+      <li><a href="apply.html">Apply</a></li>
+    </ul>
+  </nav>
+
+  <main>
+    <section class="company-profile">
+      <h1>Who We Are</h1>
+      <p>
+        Hot Beans Web is a leading web development firm dedicated to nurturing junior developers into industry-ready professionals.
+        We focus on innovation, collaboration, and hands-on learning.
+      </p>
+      <p>
+        Founded in 2020, our mission is to build cutting-edge web applications while simultaneously providing a supportive environment for new talent.
+      </p>
+    </section>
+
+    <section class="developer-profiles">
+      <h2>Meet Our Trainees</h2>
+
+      <div class="profile-card">
+        <img src="Jim.jpg" alt="add Jim's Picture here in the folder as a jpg etc" />
+        <h3>Sheshol</h3>
+        <p>Front-end enthusiast learning React and Tailwind. Loves crafting interactive UI components.</p>
+      </div>
+
+      <div class="profile-card">
+        <img src="Jane.png" alt="add Jane's Picture here in the folder as a jpg etc" />
+        <h3>Avdol</h3>
+        <p>Back-End Apprentice diving into Node.js and Express. Passionate about building scalable APIs and database integration.</p>
+      </div>
+
+      <div class="profile-card">
+        <img src="kulviner.jpg" alt="add Kulviner's Picture here in the folder as a jpg etc" />
+        <h3>Krish</h3>
+        <p>Full-stack learner tackling HTML/CSS, JavaScript, and MongoDB. Eager to build end-to-end solutions.</p>
+      </div>
+    </section>
+  </main>
+
+
+
+<div class="ai-widget">
+  <div class="ai-header">AI Assistant</div>
+  <div class="ai-body">
+    <div id="ai-response">How may I help you?<br><small>Try asking about: jobs, courses, company, application, location, contact, internships, support</small></div>
+    <input type="text" id="ai-input" placeholder="Type your question..." />
+    <button id="ai-send">Send</button>
+  </div>
+</div>
+
+  <script src="ai-assistant.js"></script>
+
+</body>
+</html>
+

@@ -1,0 +1,286 @@
+/* Reset & Theme Variables */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+html[data-theme="light"] {
+  --bg: #ffffff;
+  --txt: #333333;
+  --pri: #f04e23;
+  --sec: #f8f4f0;
+}
+html[data-theme="dark"] {
+  --bg: #1e1e1e;
+  --txt: #e0e0e0;
+  --pri: #ff6f47;
+  --sec: #2a2a2a;
+}
+body {
+  background: var(--bg);
+  color: var(--txt);
+  font-family: Arial, sans-serif;
+  line-height: 1.6;
+}
+
+/* Header & Navigation */
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: var(--pri);
+  color: #fff;
+  padding: 1rem 2rem;
+}
+.logo {
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+#theme-toggle {
+  background: none;
+  border: none;
+  font-size: 1.2rem;
+  cursor: pointer;
+  color: #fff;
+}
+nav {
+  background: var(--sec);
+  padding: 0.5rem 2rem;
+}
+.nav-list {
+  list-style: none;
+  display: flex;
+  gap: 1.5rem;
+}
+.nav-list a {
+  text-decoration: none;
+  color: var(--txt);
+  font-weight: 600;
+}
+.nav-list a:hover {
+  color: var(--pri);
+}
+
+/* Hero Section (full‐image visible) */
+.hero {
+  background: url("images/hot beans.png") center/contain no-repeat;
+  min-height: 60vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  position: relative;
+}
+.hero .hero-overlay {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+  color: #fff;
+  text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.7);
+}
+.hero-overlay h1 {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+}
+.hero-overlay p {
+  font-size: 1.2rem;
+  margin-bottom: 2rem;
+}
+.hero-overlay .btn {
+  background: var(--pri);
+  color: #fff;
+  padding: 0.75rem 1.5rem;
+  border: none;
+  border-radius: 25px;
+  font-size: 1rem;
+  text-decoration: none;
+  transition: background-color 0.3s;
+}
+.hero-overlay .btn:hover {
+  background: #d6451c;
+}
+
+/* Cards (Features, Profiles, Jobs) */
+.feature-card,
+.profile-card,
+.job-card,
+.application-form {
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  background: var(--bg);
+  text-align: center;
+  transition: transform 0.3s;
+}
+.feature-card:hover,
+.profile-card:hover {
+  transform: translateY(-5px);
+}
+
+/* Feature Cards */
+.features {
+  display: flex;
+  justify-content: space-around;
+  padding: 2rem;
+  background: var(--sec);
+}
+.feature-card {
+  overflow: hidden;
+  width: 30%;
+}
+.feature-card img {
+  width: 100%;
+}
+.feature-card h2 {
+  margin: 1rem 0;
+  font-size: 1.5rem;
+}
+.feature-card p {
+  padding: 0 1rem 1rem;
+}
+
+/* Developer Profiles */
+.developer-profiles {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  padding: 2rem;
+}
+.profile-card {
+  background: var(--sec);
+  width: 30%;
+  margin: 1rem;
+  padding-bottom: 1rem;
+}
+.profile-card img {
+  width: 100%;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+}
+.profile-card h3 {
+  margin: 1rem 0 0.5rem;
+}
+.profile-card p {
+  padding: 0 1rem;
+}
+
+/* Job Listings */
+.job-listings {
+  padding: 2rem;
+}
+.job-card {
+  background: var(--sec);
+  margin-bottom: 1rem;
+  padding: 1rem;
+  width: 100%;
+}
+.job-card h2 {
+  margin-bottom: 0.5rem;
+}
+.job-card ul {
+  list-style: disc inside;
+}
+
+/* Company Profile */
+.company-profile {
+  padding: 2rem;
+  text-align: center;
+}
+.company-profile h1 {
+  margin-bottom: 1rem;
+  font-size: 2rem;
+}
+.company-profile p {
+  margin-bottom: 1rem;
+}
+
+/* Application Form */
+.application-form {
+  padding: 2rem;
+  max-width: 600px;
+  margin: 0 auto;
+  background: var(--sec);
+}
+.application-form h1 {
+  text-align: center;
+  margin-bottom: 1rem;
+}
+.application-form label {
+  display: block;
+  margin: 1rem 0 0.5rem;
+  font-weight: 600;
+}
+.application-form input,
+.application-form textarea,
+#ai-input {
+  width: 100%;
+  padding: 0.75rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 1rem;
+  margin-bottom: 0.5rem;
+}
+.application-form textarea {
+  margin-bottom: 1rem;
+}
+.application-form button,
+#ai-send {
+  background: var(--pri);
+  color: #fff;
+  padding: 0.75rem;
+  border: none;
+  border-radius: 4px;
+  font-size: 1.1rem;
+  cursor: pointer;
+  width: 100%;
+  transition: background-color 0.3s;
+}
+.application-form button:hover,
+#ai-send:hover {
+  background: #d6451c;
+}
+
+/* AI Assistant Widget */
+.ai-widget {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  width: 250px;
+  background: var(--sec);
+  border: 1px solid var(--pri);
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+}
+.ai-header {
+  background: var(--pri);
+  color: #fff;
+  padding: 0.5rem;
+  border-radius: 8px 8px 0 0;
+  font-weight: 700;
+  text-align: center;
+}
+.ai-body {
+  padding: 0.5rem;
+  display: flex;
+  flex-direction: column;
+}
+#ai-response {
+  margin-bottom: 0.5rem;
+  font-size: 0.9rem;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .features,
+  .developer-profiles {
+    flex-direction: column;
+    align-items: center;
+  }
+  .feature-card,
+  .profile-card {
+    width: 80%;
+  }
+  .nav-list {
+    flex-direction: column;
+    gap: 1rem;
+  }
+}

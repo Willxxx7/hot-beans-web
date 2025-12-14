@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Apply Now | Hot Beans Web</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header>
+    <div class="logo">Hot Beans</div>
+    <button id="theme-toggle">🌙</button>
+  </header>
+
+  <nav>
+    <ul class="nav-list">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="jobs.html">Jobs</a></li>
+      <li><a href="apply.html">Apply</a></li>
+    </ul>
+  </nav>
+
+  <main>
+    <section class="application-form">
+      <h1>Apply to Join Hot Beans</h1>
+      <form id="job-application" action="#" method="post">
+        <label for="fullname">Full Name:</label>
+        <input type="text" id="fullname" name="fullname" required />
+
+        <label for="email">Email Address:</label>
+        <input type="email" id="email" name="email" required />
+
+        <label for="phone">Phone Number:</label>
+        <input type="tel" id="phone" name="phone" />
+
+        <label for="qualifications">Qualifications:</label>
+        <textarea id="qualifications" name="qualifications" rows="3" required></textarea>
+
+        <label for="statement">Personal Statement:</label>
+        <textarea id="statement" name="statement" rows="5" required></textarea>
+
+        <button type="submit" class="btn">Submit Application</button>
+      </form>
+    </section>
+  </main>
+
+  <!-- AI Assistant Widget (Bottom Right) -->
+<div class="ai-widget">
+  <div class="ai-header">AI Assistant</div>
+  <div class="ai-body">
+    <div id="ai-response">How may I help you?<br><small>Try asking about: jobs, courses, company, application, location, contact, internships, support</small></div>
+    <input type="text" id="ai-input" placeholder="Type your question..." />
+    <button id="ai-send">Send</button>
+  </div>
+</div>
+
+
+  <script src="script.js"></script>
+</body>
+</html>
+
