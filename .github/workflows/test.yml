@@ -11,8 +11,9 @@ jobs:
       with:
         node-version: '20'
     
+    # ✅ FIXED PACKAGE NAME
     - name: Install tools
-      run: npm install -g @html-validate/html-validate stylelint pa11y-ci prettier
+      run: npm install -g html-validate stylelint pa11y-ci prettier
       
     - name: 📁 Check structure
       run: |
