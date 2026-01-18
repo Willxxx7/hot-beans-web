@@ -1,8 +1,12 @@
 name: Test Dashboard Generator
-on: 
+permissions:
+  contents: write
+on:
   workflow_run:
-    workflows: ["Website Tests"]  # ← Matches your Actions tab exactly
-    types: [completed]
+    workflows: ["Website Tests"]
+    types:
+      - completed
+
   push:
     paths: ['test_history.csv']
 
