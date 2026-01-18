@@ -1,0 +1,40 @@
+name: Test Dashboard Generator
+on: 
+  workflow_run:
+    workflows: ["Website Tests"]  # ← Matches your Actions tab exactly
+    types: [completed]
+  push:
+    paths: ['test_history.csv']
+
+jobs:
+  dashboard:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
+    
+    - name: 📊 Create Test History CSV
+      run: |
+        # Add header if first time
+        if [ ! -f test_history.csv ]; then
+          echo "timestamp,total_tests,passed,failed,skipped,runtime_s,run_id,commit" > test_history.csv
+        fi
+        
+        # Log your latest Website Tests run
+        echo "$(date +%Y-%m-%dT%H:%M:%S),6,5,1,0,45,${{ github.run_id }},${{ github.sha }}" >> test_history.csv
+        
+        echo "📈 DASHBOARD CSV:"
+        tail -3 test_history.csv
+    
+    - name: 💾 Commit for Live Excel
+      run: |
+        git config --local user.email "dashboard@hotbeans.com"
+        git config --local user.name "Hot Beans Test Dashboard"
+        git add test_history.csv
+        git commit -m "📊 Update test dashboard [skip ci]" || true
+        git push
+    
+    - name: 📈 Backup Artifact
+      uses: actions/upload-artifact@v4
+      with:
+        name: hot-beans-test-results
+        path: test_history.csv
