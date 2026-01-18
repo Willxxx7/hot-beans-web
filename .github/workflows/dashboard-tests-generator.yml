@@ -6,7 +6,6 @@ on:
     workflows: ["Website Tests"]
     types:
       - completed
-
   push:
     paths: ['test_history.csv']
 
@@ -16,31 +15,27 @@ jobs:
     steps:
     - uses: actions/checkout@v4
       with:
-        fetch-depth: 0  # Full history for git pull
+        fetch-depth: 0
 
-    - name: 📊 Create Test History CSV
-      run: |
-        # Add header if first time
-        if [ ! -f test_history.csv ]; then
-          echo "timestamp,total_tests,passed,failed,skipped,runtime_s,run_id,commit" > test_history.csv
-        fi
-        
-        # Log your latest Website Tests run
-        echo "$(date +%Y-%m-%dT%H:%M:%S),6,5,1,0,45,${{ github.run_id }},${{ github.sha }}" >> test_history.csv
-        
-        echo "📈 DASHBOARD CSV:"
-        tail -3 test_history.csv
-
-    - name: 💾 Commit for Live Excel
+    - name: 🔄 Sync with remote FIRST
       run: |
         git config --local user.email "dashboard@hotbeans.com"
         git config --local user.name "Hot Beans Test Dashboard"
-        
-        # 🔧 THE FIX: Pull remote changes FIRST
-        git pull --rebase origin main || git pull origin main --force-with-lease
-        
+        git pull origin main --ff-only || true
+
+    - name: 📊 Create Test History CSV
+      run: |
+        if [ ! -f test_history.csv ]; then
+          echo "timestamp,total_tests,passed,failed,skipped,runtime_s,run_id,commit" > test_history.csv
+        fi
+        echo "$(date +%Y-%m-%dT%H:%M:%S),6,5,1,0,45,${{ github.run_id }},${{ github.sha }}" >> test_history.csv
+        echo "📈 DASHBOARD CSV:"
+        tail -3 test_history.csv
+
+    - name: 💾 Commit & Push
+      run: |
         git add test_history.csv
-        git commit -m "📊 Update test dashboard [skip ci]" || echo "No changes to commit"
+        git commit -m "📊 Update test dashboard [skip ci]" || echo "No changes"
         git push origin HEAD:main
 
     - name: 📈 Backup Artifact
