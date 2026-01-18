@@ -16,8 +16,8 @@ jobs:
     steps:
     - uses: actions/checkout@v4
       with:
-        fetch-depth: 0  # ← Get full history for git pull
-    
+        fetch-depth: 0  # Full history for git pull
+
     - name: 📊 Create Test History CSV
       run: |
         # Add header if first time
@@ -30,22 +30,21 @@ jobs:
         
         echo "📈 DASHBOARD CSV:"
         tail -3 test_history.csv
-    
+
     - name: 💾 Commit for Live Excel
       run: |
         git config --local user.email "dashboard@hotbeans.com"
         git config --local user.name "Hot Beans Test Dashboard"
         
-        # 🔧 CRITICAL FIX: Pull first to avoid conflicts
-        git pull origin main --rebase || git pull origin main --force-with-lease
+        # 🔧 THE FIX: Pull remote changes FIRST
+        git pull --rebase origin main || git pull origin main --force-with-lease
         
         git add test_history.csv
         git commit -m "📊 Update test dashboard [skip ci]" || echo "No changes to commit"
         git push origin HEAD:main
-    
+
     - name: 📈 Backup Artifact
       uses: actions/upload-artifact@v4
       with:
         name: hot-beans-test-results
         path: test_history.csv
-
