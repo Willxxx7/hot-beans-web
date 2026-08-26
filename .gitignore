@@ -1,16 +1,17 @@
-# VS Code
+node_modules/
+__pycache__/
+*.pyc
 .vscode/
-
-# macOS
+.env
 .DS_Store
 
-# Windows
-Thumbs.db
+# Playwright
+.playwright-mcp/
 
-# Node.js (optional)
-node_modules/
-npm-debug.log*
+# Reports
+reports/
+html-reports/
+fix-reports/
 
-# Environment
-.env
+# Testing and temp files
 *.log

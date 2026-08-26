@@ -10,6 +10,19 @@
 <body>
   <header>
     <div class="logo">Hot Beans</div>
+    
+    <!-- 3D Widget inside the Header -->
+    <div class="hb-3d-container">
+      <div class="hb-cube">
+        <div class="face front">HB</div>
+        <div class="face back">HB</div>
+        <div class="face right">HB</div>
+        <div class="face left">HB</div>
+        <div class="face top">HB</div>
+        <div class="face bottom">HB</div>
+      </div>
+    </div>
+
     <button id="theme-toggle">🌙</button>
   </header>
 
@@ -52,15 +65,14 @@
   </main>
 
   <!-- AI Assistant Widget (Bottom Right) -->
-<div class="ai-widget">
-  <div class="ai-header">AI Assistant</div>
-  <div class="ai-body">
-    <div id="ai-response">How may I help you?<br><small>Try asking about: jobs, courses, company, application, location, contact, internships, support</small></div>
-    <input type="text" id="ai-input" placeholder="Type your question..." />
-    <button id="ai-send">Send</button>
+  <div class="ai-widget">
+    <div class="ai-header">AI Assistant</div>
+    <div class="ai-body">
+      <div id="ai-response">How may I help you?<br><small>Try asking about: jobs, courses, company, application, location, contact, internships, support</small></div>
+      <input type="text" id="ai-input" placeholder="Type your question..." />
+      <button id="ai-send">Send</button>
+    </div>
   </div>
-</div>
-
 
   <script src="script.js"></script>
 </body>

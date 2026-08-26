@@ -1,0 +1,21 @@
+{
+  "name": "hot-beans-web",
+  "version": "1.0.0",
+  "type": "module",
+  "description": "Hot Beans Security Dashboard with MCP Integration",
+  "scripts": {
+    "start": "node mcp-server.js",
+    "start:enhanced": "node mcp-server-enhanced.js",
+    "start:fixer": "node mcp-server-fixer.js",
+    "serve": "npx http-server -p 5500",
+    "live": "python -m http.server 5500",
+    "test": "node test-ux-ui.js"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.30.0",
+    "zod": "^4.4.3"
+  },
+  "devDependencies": {
+    "@playwright/mcp": "^0.0.79"
+  }
+}

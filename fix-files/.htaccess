@@ -1,0 +1,5 @@
+# Block .git access
+RedirectMatch 403 /.git
+<DirectoryMatch "^/.*/.git/">
+    Require all denied
+</DirectoryMatch>

@@ -1,14 +1,19 @@
-/* Reset & Theme Variables */
+/* ==========================================================
+   RESET & THEME VARIABLES
+   ========================================================== */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  /* box-sizing: border-box means padding/borders don't increase the total width */
 }
+
+/* THEME VARIABLES: We define colors once, so we can change the whole site instantly */
 html[data-theme="light"] {
   --bg: #ffffff;
   --txt: #333333;
-  --pri: #f04e23;
-  --sec: #f8f4f0;
+  --pri: #f04e23;  /* Primary color (Hot Beans Orange) */
+  --sec: #f8f4f0;  /* Secondary color (Light beige) */
 }
 html[data-theme="dark"] {
   --bg: #1e1e1e;
@@ -16,14 +21,18 @@ html[data-theme="dark"] {
   --pri: #ff6f47;
   --sec: #2a2a2a;
 }
+
+/* BASE BODY STYLES */
 body {
-  background: var(--bg);
+  background: var(--bg);      /* Uses the variable defined above */
   color: var(--txt);
   font-family: Arial, sans-serif;
   line-height: 1.6;
 }
 
-/* Header & Navigation */
+/* ==========================================================
+   HEADER & NAVIGATION
+   ========================================================== */
 header {
   display: flex;
   justify-content: space-between;
@@ -31,6 +40,9 @@ header {
   background: var(--pri);
   color: #fff;
   padding: 1rem 2rem;
+  /* CRITICAL: position: relative allows the 3D cube to be positioned 
+     absolutely INSIDE the header (so it floats in the banner). */
+  position: relative; 
 }
 .logo {
   font-size: 1.5rem;
@@ -61,19 +73,21 @@ nav {
   color: var(--pri);
 }
 
-/* Hero Section (full‐image visible) */
+/* ==========================================================
+   HERO SECTION
+   ========================================================== */
 .hero {
   background: url("images/hot beans.png") center/contain no-repeat;
-  min-height: 60vh;
+  min-height: 60vh;     /* Takes up 60% of the screen height */
   display: flex;
   align-items: center;
   justify-content: center;
   padding: 2rem;
-  position: relative;
+  position: relative;   /* Allows the hero overlay to be placed on top */
 }
 .hero .hero-overlay {
   position: relative;
-  z-index: 1;
+  z-index: 1;           /* Ensures text sits ABOVE the background image */
   text-align: center;
   color: #fff;
   text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.7);
@@ -100,7 +114,9 @@ nav {
   background: #d6451c;
 }
 
-/* Cards (Features, Profiles, Jobs) */
+/* ==========================================================
+   CARDS (Features, Profiles, Jobs, Forms)
+   ========================================================== */
 .feature-card,
 .profile-card,
 .job-card,
@@ -113,10 +129,10 @@ nav {
 }
 .feature-card:hover,
 .profile-card:hover {
-  transform: translateY(-5px);
+  transform: translateY(-5px);   /* Raises card up slightly on hover */
 }
 
-/* Feature Cards */
+/* FEATURE CARDS */
 .features {
   display: flex;
   justify-content: space-around;
@@ -138,7 +154,7 @@ nav {
   padding: 0 1rem 1rem;
 }
 
-/* Developer Profiles */
+/* DEVELOPER PROFILES */
 .developer-profiles {
   display: flex;
   justify-content: space-around;
@@ -163,7 +179,7 @@ nav {
   padding: 0 1rem;
 }
 
-/* Job Listings */
+/* JOB LISTINGS */
 .job-listings {
   padding: 2rem;
 }
@@ -180,7 +196,7 @@ nav {
   list-style: disc inside;
 }
 
-/* Company Profile */
+/* COMPANY PROFILE */
 .company-profile {
   padding: 2rem;
   text-align: center;
@@ -193,7 +209,7 @@ nav {
   margin-bottom: 1rem;
 }
 
-/* Application Form */
+/* APPLICATION FORM */
 .application-form {
   padding: 2rem;
   max-width: 600px;
@@ -239,9 +255,9 @@ nav {
   background: #d6451c;
 }
 
-/* AI Assistant Widget */
+/* AI ASSISTANT WIDGET */
 .ai-widget {
-  position: fixed;
+  position: fixed;      /* Stays in the same place even when you scroll */
   bottom: 20px;
   right: 20px;
   width: 250px;
@@ -268,11 +284,13 @@ nav {
   font-size: 0.9rem;
 }
 
-/* Responsive */
+/* ==========================================================
+   RESPONSIVE DESIGN
+   ========================================================== */
 @media (max-width: 768px) {
   .features,
   .developer-profiles {
-    flex-direction: column;
+    flex-direction: column;   /* Stacks cards vertically on mobile */
     align-items: center;
   }
   .feature-card,
@@ -283,4 +301,64 @@ nav {
     flex-direction: column;
     gap: 1rem;
   }
+}
+
+/* ==========================================================
+   3D ROTATING HOT BEANS LOGO (HEADER WIDGET)
+   This uses CSS 3D Transforms and Animations to create a cube.
+   ========================================================== */
+.hb-3d-container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  /* transform: translate(-50%, -50%) moves the element back by half 
+     its own width/height, centering it perfectly. */
+  transform: translate(-50%, -50%);
+  z-index: 3;               /* Sits on top of the header banner */
+  perspective: 800px;       /* Creates the "3D depth" effect. The lower the number, the more dramatic the depth */
+  pointer-events: none;     /* Allows clicks to pass through the cube so it doesn't block buttons */
+}
+
+.hb-cube {
+  width: 50px;
+  height: 50px;
+  position: relative;
+  transform-style: preserve-3d;   /* Tells the browser to keep children in 3D space, not flatten them */
+  transform: rotateX(-20deg) rotateY(30deg);  /* Gives the cube a starting angle */
+  animation: spinHB 8s infinite linear;        /* Starts the animation */
+}
+
+.face {
+  position: absolute;
+  width: 50px;
+  height: 50px;
+  /* The background is semi-transparent white, creating a "frosted glass" effect */
+  background: rgba(255, 255, 255, 0.7); 
+  border: 1px solid rgba(255, 255, 255, 0.9);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 16px;
+  font-weight: 900;
+  color: var(--pri);
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+  backdrop-filter: blur(4px);        /* Blurs whatever is behind the cube (adds to the glass effect) */
+  -webkit-backdrop-filter: blur(4px);/* For older Safari browsers */
+}
+
+/* POSITIONING THE 6 FACES:
+   translateZ moves an element "forward" or "backward" in 3D space.
+   25px is half of the 50px cube, so the faces move outwards to form the cube. */
+.front  { transform: translateZ(25px); }
+.back   { transform: rotateY(180deg) translateZ(25px); }
+.right  { transform: rotateY(90deg)  translateZ(25px); }
+.left   { transform: rotateY(-90deg) translateZ(25px); }
+.top    { transform: rotateX(90deg)  translateZ(25px); }
+.bottom { transform: rotateX(-90deg) translateZ(25px); }
+
+/* KEYFRAME ANIMATION:
+   This rotates the cube from 0 degrees to 360 degrees forever. */
+@keyframes spinHB {
+  from { transform: rotateX(-20deg) rotateY(0deg); }
+  to   { transform: rotateX(-20deg) rotateY(360deg); }
 }

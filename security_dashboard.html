@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Hot Beans Security Dashboard</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: white;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+        }
+        h1 {
+            color: #333;
+            border-bottom: 4px solid #4CAF50;
+            padding-bottom: 15px;
+            margin-bottom: 10px;
+            font-size: 28px;
+        }
+        .header-info {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            margin-bottom: 20px;
+            padding: 10px 0;
+            border-bottom: 1px solid #eee;
+        }
+        .timestamp {
+            color: #666;
+            font-size: 14px;
+        }
+        .status-badge {
+            display: inline-block;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: bold;
+            background: #28a745;
+            color: white;
+        }
+        .status {
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 10px;
+            font-weight: bold;
+            font-size: 18px;
+        }
+        .up { background: #d4edda; color: #155724; border: 2px solid #c3e6cb; }
+        .down { background: #f8d7da; color: #721c24; border: 2px solid #f5c6cb; }
+        .warning { background: #fff3cd; color: #856404; border: 2px solid #ffeeba; }
+        .ok { background: #d4edda; color: #155724; border: 2px solid #c3e6cb; }
+        .critical { background: #f8d7da; color: #721c24; border: 2px solid #f5c6cb; }
+        .status-icon {
+            display: inline-block;
+            width: 14px;
+            height: 14px;
+            border-radius: 50%;
+            margin-right: 12px;
+            vertical-align: middle;
+        }
+        .green-dot { background: #28a745; }
+        .red-dot { background: #dc3545; }
+        .yellow-dot { background: #ffc107; }
+        h2 {
+            color: #555;
+            margin-top: 30px;
+            margin-bottom: 15px;
+            font-size: 20px;
+            display: flex;
+            align-items: center;
+        }
+        h2 .badge {
+            margin-left: 10px;
+            font-size: 12px;
+            padding: 3px 10px;
+            border-radius: 12px;
+            background: #6c757d;
+            color: white;
+        }
+        .header-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .file-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            font-weight: normal;
+        }
+        .file-list li {
+            padding: 8px 15px;
+            margin: 5px 0;
+            background: #f8f9fa;
+            border-radius: 5px;
+            font-family: Courier New, monospace;
+            font-size: 14px;
+            border-left: 4px solid #dc3545;
+        }
+        .footer {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 2px solid #eee;
+            color: #999;
+            font-size: 13px;
+            text-align: center;
+        }
+        .footer .highlight {
+            color: #667eea;
+            font-weight: bold;
+        }
+        .summary-section {
+            margin: 30px 0;
+            padding: 20px;
+            background: #f8f9fa;
+            border-radius: 10px;
+            border-left: 4px solid #dc3545;
+        }
+        .summary-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 15px;
+        }
+        .summary-card {
+            text-align: center;
+            padding: 10px;
+            background: white;
+            border-radius: 8px;
+        }
+        .summary-card .icon {
+            font-size: 24px;
+        }
+        .summary-card .label {
+            font-size: 12px;
+            color: #666;
+        }
+        .summary-card .value {
+            font-weight: bold;
+            font-size: 14px;
+            margin-top: 3px;
+        }
+        @media (max-width: 600px) {
+            .container { padding: 20px; }
+            h1 { font-size: 22px; }
+            .header-info { flex-direction: column; align-items: flex-start; gap: 10px; }
+            .status { font-size: 15px; padding: 15px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header-info">
+            <h1>Hot Beans Security Dashboard</h1>
+            <div class="header-item">
+                <span class="status-badge">LIVE</span>
+                <span class="timestamp"> 2026-08-26 10:48:57</span>
+            </div>
+        </div>
+        <div class="status down">
+            <span class="status-icon down-dot"></span>
+            🚨 CRITICAL: Website is DOWN!
+        </div>
+        <h2>
+            Security Headers
+            <span class="badge">0 OK</span>
+        </h2>
+        <div class="status ok">
+            <span class="status-icon green-dot"></span>
+            <ul class="file-list">
+                <li>✅ All security headers present</li>
+            </ul>
+        </div>
+        <h2>
+            Exposed Files
+            <span class="badge">0 OK</span>
+        </h2>
+        <div class="status ok">
+            <span class="status-icon green-dot"></span>
+            <ul class="file-list">
+                <li>✅ No exposed files found</li>
+            </ul>
+        </div>
+        <div class="summary-section">
+            <h3 style="color: #333; margin-bottom: 10px;">Security Summary</h3>
+            <div class="summary-grid">
+                <div class="summary-card">
+                    <div class="icon">🚨</div>
+                    <div class="label">Site Status</div>
+                    <div class="value" style="color: #dc3545;">OFFLINE</div>
+                </div>
+                <div class="summary-card">
+                    <div class="icon">✅</div>
+                    <div class="label">Headers</div>
+                    <div class="value" style="color: #28a745;">OK</div>
+                </div>
+                <div class="summary-card">
+                    <div class="icon">✅</div>
+                    <div class="label">Exposed Files</div>
+                    <div class="value" style="color: #28a745;">OK</div>
+                </div>
+            </div>
+        </div>
+        <div class="footer">
+            Automated Security Monitoring System<br>
+            Target: http://127.0.0.1:5500 | 
+            Check Interval: 60 seconds<br>
+            <span style="font-size: 11px; color: #ccc;">Built for Hot Beans Web Security Course</span>
+        </div>
+    </div>
+</body>
+</html>
